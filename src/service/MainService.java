@@ -95,5 +95,18 @@ public class MainService {
 		System.out.println("Vecums ir: " + agei);
 	
 	}
+	public static float calculateAVGGrade(int [] grades) {
+		float result = 0;
+		
+		if(grades != null) {
+			float sum = 0;
+			for(int temp : grades) {
+				sum += temp;
+			}
+			result = sum/grades.length;
+		}
+		
+		return result;
+	}
 	
 }
