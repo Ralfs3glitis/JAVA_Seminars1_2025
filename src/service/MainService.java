@@ -61,6 +61,9 @@ public class MainService {
 		}
 		System.out.println();
 		
+		float avgGradeFromFunc = calculateAVGGrade(grades);
+		System.out.println("average grade: " + avgGradeFromFunc);
+		
 		//-------------------------------------------String piemeri-------------------------------------
 		
 		String courseTitle = "Programmesana Timekli JAVA";
@@ -93,6 +96,12 @@ public class MainService {
 		System.out.println(pricef);
 		int agei = Integer.parseInt("18");
 		System.out.println("Vecums ir: " + agei);
+		
+		String name1 = "Roberts";
+		String name2 = "Janis";
+		if(isValid(name1)) {
+			System.out.println(name1 + " der");
+		}
 	
 	}
 	public static float calculateAVGGrade(int [] grades) {
@@ -108,5 +117,15 @@ public class MainService {
 		
 		return result;
 	}
-	
+	public static boolean isValid(String inputName) {
+		if(inputName != null && !inputName.isEmpty()) {
+			if (inputName.matches("[A-Z] {1}[a-z] {3,10}")) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		return false;
+	}
 }
