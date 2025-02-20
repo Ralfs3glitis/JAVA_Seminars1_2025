@@ -2,6 +2,7 @@ package service;
 import java.util.Arrays;
 
 import datastr.MyList;
+import model.Student;
 
 public class MainService {
 
@@ -78,5 +79,39 @@ public class MainService {
 		catch(Exception e) {
 			System.out.println(e);
 		}
+		System.out.println("-----------------------------------Student class------------------------------------");
+		MyList<Student> listForStudent = new MyList<Student>(1);
+		Student st1 = new Student();
+		Student st2 = new Student("Ralfs", "Eglitis");
+		Student st3 = new Student("Anna Paula", "Jauka Nejauka");
+		Student st4 = new Student("089089asd9082", "Skirm$ante");
+		listForStudent.add(st1);
+		listForStudent.add(st2);
+		
+		try {
+			listForStudent.print(); 
+			listForStudent.add(st3, 0);
+			listForStudent.print(); 
+			
+			System.out.println(listForStudent.get(0));
+			System.out.println(Arrays.toString(listForStudent.searchElement(st2)));
+			
+			listForStudent.sort(); 
+			listForStudent.print();
+			
+			listForStudent.remove(1);
+			listForStudent.print();
+			
+			listForStudent.makeEmpty();
+			//listForStudent.print();
+			
+			
+			listForStudent.add(st4);
+			listForStudent.print();
+		}
+		catch(Exception e) {
+			System.out.println(e);
+		}
+		
 	}
 }
