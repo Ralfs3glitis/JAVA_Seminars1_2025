@@ -157,8 +157,50 @@ public class MyList {
 		}
 		return indexes;
 	}
+	//MD: f-ija, kas sanem elementu un atgriez nakoso elementu
+	public char return_next(char element) throws Exception {
+		if(isEmpty()) {
+			throw new Exception("The list is empty");
+		}
+		for(int i = 0; i < counter; i++) {
+			if(list[i] == element) {
+				return list[i+1];
+			}
+		}
+		return 'N';
+	}
 	
-	
+	public void sort() {
+		for(int i = 0; i < counter; i++) {
+			for(int j = 0; j < counter; j++) {
+				if(list[i] > list[j]) {
+					swap(i, j);
+				}
+			}
+		}
+	}
+	private void swap(int index1, int index2) {
+		char temp = list[index1];
+		list[index1] = list[index2];
+		list[index2] = temp;
+	}
+	public void print() throws Exception {
+		if(isEmpty()) {
+			throw new Exception("The list is empty");
+		}
+		for(int i = 0; i < counter; i++) {
+			System.out.print(list[i] + " ");
+		}
+		System.out.println();
+	}
+	public void makeEmpty(){
+		if(!isEmpty()) {
+			size = DEFAULT_SIZE;
+			counter = 0;
+			list = new char[size];
+			System.gc();
+		}
+	}
 	
 	
 	
