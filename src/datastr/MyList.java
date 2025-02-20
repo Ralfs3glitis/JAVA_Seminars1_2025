@@ -95,7 +95,7 @@ public class MyList {
 		//list[counter] = element;
 		//counter++
 	}
-	public void add(char element, int index) {
+	public void add(char element, int index) throws Exception {
 		if(index < 0 || index > counter) {
 			//Exception myExc = new Exception("The index is not excepted");
 			//throw myExc;
@@ -111,6 +111,20 @@ public class MyList {
 		}
 		list[index] = element;
 		counter++;
+	}
+	public void remove(int index) throws Exception {
+		if(isEmpty()) {
+			throw new Exception("The list is empty");
+		}
+		if(index < 0 || index >= counter) {
+				throw new Exception("The index is not excepted");
+		}
+		for(int i = index; i < counter-1; i++) {
+			list[i] = list[i+1];
+		}
+		counter--;
+		list[counter]= ' ';
+		
 	}
 	
 	
