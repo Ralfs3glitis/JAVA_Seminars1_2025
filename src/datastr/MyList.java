@@ -134,7 +134,29 @@ public class MyList {
 		}
 		return list[index];
 	}
-	
+	public int[] searchElement(char element) throws Exception {
+		if(isEmpty()) {
+			throw new Exception("The list is empty");
+		}
+		int skaititajs = 0;
+		for(int i = 0; i < counter; i++) {
+			if(list[i] == element) {
+				skaititajs++;
+			}
+		}
+		if(skaititajs == 0) {
+			throw new Exception("Element not found");
+		}
+		int[] indexes = new int[skaititajs];
+		int counterForIndexes = 0;
+		for(int i = 0; i < counter; i++) {
+			if(list[i] == element) {
+				indexes[counterForIndexes] = i;
+				counterForIndexes++;
+			}
+		}
+		return indexes;
+	}
 	
 	
 	
