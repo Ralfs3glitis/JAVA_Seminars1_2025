@@ -1,16 +1,16 @@
 package datastr;
 
-public class MyList {
+public class MyList<Ttype> {
 
 	//mainīgie
-	private char[] list;
+	private Ttype[] list;
 	private final int DEFAULT_SIZE = 7;
 	private int size = DEFAULT_SIZE;
 	private int counter = 0;
 	
 	//noklusētais konstruktors
 	public MyList() {
-		list = new char[size];
+		list = (Ttype[]) new Object[size];
 	}
 	
 	//argumenta konstruktors
@@ -18,7 +18,7 @@ public class MyList {
 		if(inputSize > 0) {
 			size = inputSize;
 		}
-		list = new char[size];		
+		list = (Ttype[]) new Object[size];		
 	}
 	
 	private boolean isFull() {
@@ -73,7 +73,7 @@ public class MyList {
 			size = (int)(size * 1.5); //135.7 -> 135
 		}
 		
-		char[] listNew = new char[size];
+		Ttype[] listNew = (Ttype[]) new Object[size];
 		
 		for(int i = 0 ; i < counter; i++) {
 			listNew[i] = list[i];	
@@ -86,7 +86,7 @@ public class MyList {
 			
 	}
 	
-	public void add(char element) {
+	public void add(Ttype element) {
 		if(isFull()) {
 			resize();
 		}
@@ -95,7 +95,7 @@ public class MyList {
 		//list[counter] = element;
 		//counter++
 	}
-	public void add(char element, int index) throws Exception {
+	public void add(Ttype element, int index) throws Exception {
 		if(index < 0 || index > counter) {
 			//Exception myExc = new Exception("The index is not excepted");
 			//throw myExc;
@@ -123,9 +123,10 @@ public class MyList {
 			list[i] = list[i+1];
 		}
 		counter--;
-		list[counter]= ' ';
+		list[counter]= null;
 	}
-	public char get(int index) throws Exception {
+	
+	public Ttype get(int index) throws Exception {
 		if(isEmpty()) {
 			throw new Exception("The list is empty");
 		}
@@ -134,13 +135,14 @@ public class MyList {
 		}
 		return list[index];
 	}
-	public int[] searchElement(char element) throws Exception {
+	
+	public int[] searchElement(Ttype element) throws Exception {
 		if(isEmpty()) {
 			throw new Exception("The list is empty");
 		}
 		int skaititajs = 0;
 		for(int i = 0; i < counter; i++) {
-			if(list[i] == element) {
+			if(list[i].equals(element)) {
 				skaititajs++;
 			}
 		}
@@ -157,30 +159,32 @@ public class MyList {
 		}
 		return indexes;
 	}
+	
 	//MD: f-ija, kas sanem elementu un atgriez nakoso elementu
-	public char return_next(char element) throws Exception {
+	public Ttype return_next(Ttype element) throws Exception {
 		if(isEmpty()) {
 			throw new Exception("The list is empty");
 		}
 		for(int i = 0; i < counter; i++) {
-			if(list[i] == element) {
+			if(list[i].equals(element)) {
 				return list[i+1];
 			}
 		}
-		return 'N';
+		return null;
 	}
 	
 	public void sort() {
 		for(int i = 0; i < counter; i++) {
 			for(int j = 0; j < counter; j++) {
-				if(list[i] > list[j]) {
+				//if(list[i] > list[j]) {
+				if ( ((Comparable)(list[i])).compareTo(list[j]) == 1) {
 					swap(i, j);
 				}
 			}
 		}
 	}
 	private void swap(int index1, int index2) {
-		char temp = list[index1];
+		Ttype temp = list[index1];
 		list[index1] = list[index2];
 		list[index2] = temp;
 	}
@@ -197,7 +201,7 @@ public class MyList {
 		if(!isEmpty()) {
 			size = DEFAULT_SIZE;
 			counter = 0;
-			list = new char[size];
+			list = (Ttype[]) new Object[size];
 			System.gc();
 		}
 	}
