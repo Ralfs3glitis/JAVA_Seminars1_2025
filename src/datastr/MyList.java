@@ -79,12 +79,23 @@ public class MyList {
 			listNew[i] = list[i];	
 		}
 		
+		//nomainam referenci uz jauno masivu
 		list = listNew;
-		
+		//garbage collector, izdzes ieprieksejo list masivu
 		System.gc();
 			
 	}
 	
+	public void add(char element) {
+		if(isFull()) {
+			resize();
+		}
+		list[counter++] = element;
+		//vai 
+		//list[counter] = element;
+		//counter++
+		
+	}
 	
 	
 	
