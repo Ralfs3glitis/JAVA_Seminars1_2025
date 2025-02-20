@@ -124,8 +124,17 @@ public class MyList {
 		}
 		counter--;
 		list[counter]= ' ';
-		
 	}
+	public char get(int index) throws Exception {
+		if(isEmpty()) {
+			throw new Exception("The list is empty");
+		}
+		if(index < 0 || index >= counter) {
+			throw new Exception("The index is not excepted");
+		}
+		return list[index];
+	}
+	
 	
 	
 	
