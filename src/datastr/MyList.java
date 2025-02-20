@@ -94,8 +94,25 @@ public class MyList {
 		//vai 
 		//list[counter] = element;
 		//counter++
-		
 	}
+	public void add(char element, int index) {
+		if(index < 0 || index > counter) {
+			//Exception myExc = new Exception("The index is not excepted");
+			//throw myExc;
+			//vai 
+			throw new Exception("The index is not excepted");
+		}
+		if(isFull()) {
+				resize();
+		}
+		
+		for(int i = counter; i > index; i--) {
+			list[i] = list[i-1];
+		}
+		list[index] = element;
+		counter++;
+	}
+	
 	
 	
 	
